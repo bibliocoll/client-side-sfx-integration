@@ -1,0 +1,37 @@
+client-side-sfx-integration
+===========================
+
+MPG SFX + jQuery + Yahoo YQL (in Aleph)
+
+Working example
+===============
+http://aleph.mpg.de/F?func=direct&doc_number=000000323&local_base=rdg01&con_lng=eng
+
+Installation instructions
+=========================
+Make the following third-party scripts available on your Aleph server:
+
+http://james.padolsey.com/javascript/cross-domain-requests-with-jquery/ (jquery.xdomainajax.js)
+Change the Yahoo query from "select * from html" to "select * from xml" (SFX response is XML)
+http://outwestmedia.com/jquery-plugins/xmldom/ (for IE bug) (jquery.xmldom-1.0.js)
+For jQueries, you will need CSS-IDs in your full view - we use the built-in MARC/MAB-Field plus contents variables in full-999-body:
+
+<span id="$0100">$0200</span>
+and direct-head/full-set-head(-nobor):
+
+<table id="vollanzeige" cellspacing=2 border=0 width=100%>
+Place the following code into full-set-tail/direct-tail. 
+You will need to customize the Jquery-Id-Selectors to the headings in col.8 in edit_doc_999 – they are used by Aleph in full view as internal variable $0200. Change "my.sfx.server" to your SFX server url.
+
+License
+=======
+
+Copyright 2013 Daniel Zimmel
+
+Licensed under the MIT license:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
